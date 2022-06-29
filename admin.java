@@ -52,7 +52,36 @@ public class admin {
                             break;
                         } // end of print donor
                         case 3: {
+                            if (don.size() > 0) {
+                                if (rec.size() > 0) {
+                                    String option;
+                                    Scanner input = new Scanner(System.in);
+                                    System.out.println("###########Receiver details###########");
+                                    for (int i = 0, j = 0; i < rec.size() && j < don.size(); i++, j++) {
+                                        System.out.println("Name: " + rec.get(i).getName());
+                                        System.out.println("Prof: " + rec.get(i).getProfession());
+                                        System.out.println("Reason: " + rec.get(i).getReason());
+                                        System.out.println("Number of Family: " + rec.get(i).getFamily());
 
+                                        System.out.println("Type yes to donate/no to delete the current receiver\n");
+                                        System.out.print("Enter your choice: ");
+                                        option = input.nextLine();
+                                        if (option.equals("yes")) {
+                                            System.out.println(rec.get(i).getName() + " has got donation from "
+                                                    + don.get(j).getName() + ". Amount of money: "
+                                                    + don.get(j).moneyAmount());
+                                            don.remove(j);// remove donor from vector
+                                        } else {
+                                            System.out.println("Receiver has been removed\n");
+                                        }
+                                        rec.remove(i);// remove receiver from vector
+                                    }
+                                } else {
+                                    System.out.println("No Receiver available\n");
+                                }
+                            } else {
+                                System.out.println("No donor available");
+                            }
                             break;
                         }
                     }
