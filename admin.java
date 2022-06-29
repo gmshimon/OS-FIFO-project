@@ -119,7 +119,29 @@ public class admin {
                             break;
                         } // end of print receiver
                         case 3: {
+                            Scanner input = new Scanner(System.in);
+                            String name;
+                            boolean ismatch = false;
+                            if (rec.size() > 0) {
+                                System.out.println("Type your name to delete your registration");
+                                System.out.print("Name: ");
+                                name = input.nextLine();
 
+                                for (int i = 0; i < rec.size(); i++) {
+                                    if (rec.get(i).getName().equals(name)) {
+                                        rec.remove(i);
+                                        ismatch = true;
+                                        break;
+                                    }
+                                }
+                                if (ismatch) {
+
+                                } else {
+                                    System.out.println("Name doesnot match\n");
+                                }
+                            } else {
+                                System.out.println("No receiver available\n");
+                            }
                             break;
                         }
                     }
